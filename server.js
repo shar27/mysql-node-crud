@@ -62,12 +62,35 @@ const mysqlConnection = mysql.createConnection({
 //   });
 // });
 
-mysqlConnection.connect(function(err){
-  if ( err) throw err;
-  console.log('connected');
-  const sql = "INSERT INTO customers (name, address) VALUES ('shar', 'the mooon 1')"
-  mysqlConnection.query(sql, function(err, result){
+//add ID 
+// mysqlConnection.connect(function(err){
+//   if ( err) throw err;
+//   console.log('connected');
+//   const sql = "INSERT INTO customers (name, address) VALUES ('shar', 'the mooon 1')"
+//   mysqlConnection.query(sql, function(err, result){
+//     if (err) throw err;
+//     console.log("data added and ID:" + result.InsertID);
+//   });
+// });
+
+
+// delete 
+// mysqlConnection.connect(function(err) {
+//   if (err) throw err;
+//   const sql = "DELETE FROM customers WHERE address = '60'";
+//   mysqlConnection.query(sql, function (err, result) {
+//     if (err) throw err;
+//     console.log("Number of records deleted: " + result.affectedRows);
+//   });
+// });
+
+//update 
+
+mysqlConnection.connect(function(err) {
+  if (err) throw err;
+  var sql = "UPDATE customers SET address = 'tresco road' WHERE address = 'keep going'";
+  mysqlConnection.query(sql, function (err, result) {
     if (err) throw err;
-    console.log("data added and ID:" + result.InsertID);
+    console.log(result.affectedRows + " updated");
   });
 });
